@@ -5,7 +5,7 @@ class DirectedWeightedGraph:
 
 
     def add_vertex(self, vertex):
-        from vertex import Vertex
+        from structures.vertex import Vertex
 
         if isinstance(vertex, Vertex) and vertex.name not in self.vertices:
             self.vertices[vertex.name] = vertex
@@ -15,7 +15,7 @@ class DirectedWeightedGraph:
 
 
     def add_edge(self, vertex1, vertex2, cost=0):
-        from edge import Edge
+        from structures.edge import Edge
 
         if vertex1.name in self.vertices and vertex2.name in self.vertices:
             self.edges.append(Edge(vertex1, vertex2, cost))
@@ -25,11 +25,20 @@ class DirectedWeightedGraph:
         
         
     def get_vertices(self):
-        return self.vertices
+        return list(self.vertices.values())
     
+
+    def get_first_vertex(self):
+        return self.get_vertices()[0]
     
+
+    def unmark_all(self):
+        for vertex in self.get_vertices():
+            vertex.unmark()
+    
+
     def get_adyacents(self, vertex):
-        from vertex import Vertex
+        from structures.vertex import Vertex
         if not isinstance(vertex, Vertex) or vertex.name not in self.vertices:
             return None
         

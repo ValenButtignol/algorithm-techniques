@@ -1,4 +1,4 @@
-class DirectedUnweightedGraph:
+class UnirectedUnweightedGraph:
     def __init__(self):
         self.nodes = {}
 
